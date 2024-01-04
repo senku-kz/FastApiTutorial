@@ -102,5 +102,6 @@ Content-Type: application/json
 
 {
   "item": {"name": "string","description": "string","price": 10,"tax": 2},
-  "user": {"username": "username","full_name": "full_name"}
+  "user": {"username": "username","full_name": "full_name"},
+  "importance": 5
 }

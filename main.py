@@ -22,13 +22,19 @@ class User(BaseModel):
     full_name: str | None = None
 
 
+# class Importance(BaseModel):
+#     importance: int
+
+
 @app.put("/items/{item_id}")
 async def update_item(
         *,
         item_id: int = Path(..., title="The ID of the item to get", ge=0, le=150),
         q: str | None = None,
         item: Item = Body(..., embed=True),
-        user: User
+        user: User,
+        # importance: Importance
+        importance: int = Body(...)
 ):
     results = {"item_id": item_id}
     if q:
@@ -37,5 +43,7 @@ async def update_item(
         results.update({"item": item})
     if user:
         results.update({"user": user})
+    if importance:
+        results.update({"importance": importance})
 
     return results
