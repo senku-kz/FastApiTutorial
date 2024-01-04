@@ -31,3 +31,18 @@ async def get_item_list():
 @app.get("/items/{item_id}")
 async def get_item(item_id: int):
     return {"item_id": item_id}
+
+
+@app.get("/users")
+async def get_user_list():
+    return {"message": "item list"}
+
+
+@app.get("/users/{user_id}")
+async def get_user(user_id: int):
+    return {"user_id": user_id}
+
+
+@app.get("/users/me")
+async def get_current_user():
+    return {"user_id": "this is the current user"}

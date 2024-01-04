@@ -23,3 +23,15 @@ Accept: application/json
 ### ERROR /items/{items_id}
 GET http://127.0.0.1:8000/items/hello
 Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users/5
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users/me
+Accept: application/json
