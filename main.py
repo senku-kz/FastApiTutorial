@@ -39,7 +39,7 @@ async def get_user_list():
 
 
 @app.get("/users/{user_id}")
-async def get_user(user_id: int):
+async def get_user(user_id: str):
     return {"user_id": user_id}
 
 
