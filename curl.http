@@ -96,3 +96,11 @@ Accept: application/json
 GET http://127.0.0.1:8000/items_hidden?hidden_query=123
 Accept: application/json
 
+###
+PUT http://127.0.0.1:8000/items/12?q=2
+Content-Type: application/json
+
+{
+  "item": {"name": "string","description": "string","price": 10,"tax": 2},
+  "user": {"username": "username","full_name": "full_name"}
+}
