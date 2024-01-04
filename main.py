@@ -35,7 +35,7 @@ async def get_item(item_id: int):
 
 @app.get("/users")
 async def get_user_list():
-    return {"message": "item list"}
+    return {"message": "user list"}
 
 
 @app.get("/users/{user_id}")
