@@ -55,3 +55,20 @@ Accept: application/json
 ### ERROR
 GET http://127.0.0.1:8000/foods/meet
 Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/hello?q=word&short=no
+Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/hello?q=word&short=yes
+Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/hello?q=word&short=0
+Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/hello?q=word&short=1
+Accept: application/json
+
