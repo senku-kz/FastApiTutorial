@@ -17,6 +17,7 @@ async def list_items(skip: int = 0, limit: int = 10):
 async def get_item(
         item_id: str,
         # q: Optional[str] = None
+        sample_query_param: str,
         q: str | None = None,
         short: bool = False
         # sample_query_param: str, q: str | None = None, short: bool = False
@@ -25,7 +26,8 @@ async def get_item(
     #     return {"item_id": item_id, "q": q}
     # return {"item_id": item_id}
 
-    item = {"item_id": item_id}
+    # item = {"item_id": item_id}
+    item = {"item_id": item_id, "sample_query_param": sample_query_param}
     if q:
         item.update({"q": q})
     if not short:
