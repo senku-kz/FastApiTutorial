@@ -25,15 +25,35 @@ async def put():
     return {"message": "hello from the put route"}
 
 
+fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
+
+
 @app.get("/items")
-async def get_item_list():
-    return {"message": "item list"}
+async def list_items(skip: int = 0, limit: int = 10):
+    return fake_items_db[skip:skip + limit]
 
 
 @app.get("/items/{item_id}")
-async def get_item(item_id: int):
-    return {"item_id": item_id}
+async def get_item(
+    item_id: str,
+    # q: Optional[str] = None
+    q: str | None = None
 
+    # sample_query_param: str, q: str | None = None, short: bool = False
+):
+    # item = {"item_id": item_id, "sample_query_param": sample_query_param}
+    # if q:
+    #     item.update({"q": q})
+    # if not short:
+    #     item.update(
+    #         {
+    #             "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consectetur."
+    #         }
+    #     )
+    # return item
+    if q:
+        return {"item_id": item_id, "q": q}
+    return {"item_id": item_id}
 
 @app.get("/users")
 async def get_user_list():
