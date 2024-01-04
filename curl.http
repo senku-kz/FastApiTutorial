@@ -35,3 +35,23 @@ Accept: application/json
 ###
 GET http://127.0.0.1:8000/users/me
 Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users/bob
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/foods/fruits
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/foods/vegetables
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/foods/dairy
+Accept: application/json
+
+### ERROR
+GET http://127.0.0.1:8000/foods/meet
+Accept: application/json
