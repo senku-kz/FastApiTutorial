@@ -11,3 +11,11 @@ Accept: application/json
 ### SWAGER documentation
 GET http://127.0.0.1:8000/docs
 Accept: text/html
+
+### GET /items
+GET http://127.0.0.1:8000/items
+Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/5
+Accept: application/json

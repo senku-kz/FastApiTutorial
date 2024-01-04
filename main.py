@@ -21,3 +21,13 @@ async def post():
 @app.put("/")
 async def put():
     return {"message": "hello from the put route"}
+
+
+@app.get("/items")
+async def get_item_list():
+    return {"message": "item list"}
+
+
+@app.get("/items/{item_id}")
+async def get_item(item_id: int):
+    return {"item_id": item_id}
