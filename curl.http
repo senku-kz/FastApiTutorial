@@ -1,0 +1,13 @@
+# https://www.jetbrains.com/help/pycharm/http-client-in-product-code-editor.html
+
+### GET Hello World
+GET http://127.0.0.1:8000
+Accept: application/json
+
+### GET /hello/{name}
+GET http://127.0.0.1:8000/hello/senku
+Accept: application/json
+
+### SWAGER documentation
+GET http://127.0.0.1:8000/docs
+Accept: text/html
