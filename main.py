@@ -1,6 +1,6 @@
 from enum import Enum
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -10,78 +10,32 @@ fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"
 
 
 @app.get("/items")
-async def list_items(skip: int = 0, limit: int = 10):
-    return fake_items_db[skip:skip + limit]
-
-
-@app.get("/items/{item_id}")
-async def get_item(
-        item_id: str,
-        # q: Optional[str] = None
-        sample_query_param: str,
-        q: str | None = None,
-        short: bool = False
-        # sample_query_param: str, q: str | None = None, short: bool = False
+async def read_items(
+    required_query: str = Query(...),
+    query_list: list[str] | None = Query(None),
+    query_list2: list[str] = Query(["foo", "bar"]),
+    q: str | None = Query(
+        None,
+        min_length=3,
+        max_length=10,
+        title="Sample query string",
+        description="This is a sample query string.",
+        # alias="item-query",
+    )
 ):
-    # if q:
-    #     return {"item_id": item_id, "q": q}
-    # return {"item_id": item_id}
-
-    # item = {"item_id": item_id}
-    item = {"item_id": item_id, "sample_query_param": sample_query_param}
+    results = {"items": [{"item_id": "Foo"}, {"item_id": "Bar"}]}
     if q:
-        item.update({"q": q})
-    if not short:
-        item.update(
-            {
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consectetur."
-            }
-        )
-    return item
+        results.update({"required_query": required_query})
+        results.update({"query_list": query_list})
+        results.update({"query_list2": query_list2})
+        results.update({"q": q})
+    return results
 
 
-@app.get("/items/{user_id}/item/{item_id}")
-async def get_user_item(
-        user_id: int,
-        item_id: str,
-        q: str | None = None,
-        short: bool = False
+@app.get("/items_hidden")
+async def hidden_query_route(
+    hidden_query: str | None = Query(None, include_in_schema=False)
 ):
-    item = {"item_id": item_id, "owner_id": user_id}
-    if q:
-        item.update({"q": q})
-    if not short:
-        item.update(
-            {
-                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut consectetur."
-            }
-        )
-        return item
-
-
-class Item(BaseModel):
-    name: str
-    description: str | None = None
-    price: float
-    tax: float | None = None
-
-
-@app.post("/items")
-async def create_item(item: Item):
-    item_dict = item.dict()
-    if item.tax:
-        price_with_tax = item.price + item.tax
-        item_dict.update({"price_with_tax": price_with_tax})
-    return item_dict
-
-
-@app.put("/items/{item_id}")
-async def create_item_with_put(
-        item_id: int,
-        item: Item,
-        q: str | None = None
-):
-    result = {"item_id": item_id, **item.dict()}
-    if q:
-        result.update({"q": q})
-    return result
+    if hidden_query:
+        return {"hidden_query": hidden_query}
+    return {"hidden_query": "Not found"}

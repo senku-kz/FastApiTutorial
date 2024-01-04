@@ -76,3 +76,23 @@ Accept: application/json
 GET http://127.0.0.1:8000/items/123/item/1234?q=word&short=0
 Accept: application/json
 
+###
+GET http://127.0.0.1:8000/items?q=12
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/items?q=12345678901
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/items?required_query=123&q=123&query_list=a&query_list=b&query_list=c&query_list=d
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/items_hidden
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/items_hidden?hidden_query=123
+Accept: application/json
+
