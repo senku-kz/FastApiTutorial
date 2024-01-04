@@ -19,3 +19,7 @@ Accept: application/json
 ### GET /items/{items_id}
 GET http://127.0.0.1:8000/items/5
 Accept: application/json
+
+### ERROR /items/{items_id}
+GET http://127.0.0.1:8000/items/hello
+Accept: application/json
