@@ -23,3 +23,56 @@ Accept: application/json
 ### ERROR /items/{items_id}
 GET http://127.0.0.1:8000/items/hello
 Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users/5
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users/me
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/users/bob
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/foods/fruits
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/foods/vegetables
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/foods/dairy
+Accept: application/json
+
+### ERROR
+GET http://127.0.0.1:8000/foods/meet
+Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/hello?q=word&short=no
+Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/hello?q=word&short=yes
+Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/hello?q=word&short=0
+Accept: application/json
+
+### GET /items/{items_id}
+GET http://127.0.0.1:8000/items/hello?q=word&short=1
+Accept: application/json
+
+###
+GET http://127.0.0.1:8000/items/123/item/1234?q=word&short=0
+Accept: application/json
+
